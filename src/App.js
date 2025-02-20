@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Button from "../src/components/ui/button";
 import Select from "../src/components/ui/select";
 import Textarea from "../src/components/ui/textarea";
@@ -13,7 +13,6 @@ function App() {
   const [detectedLang, setDetectedLang] = useState("Detecting...");
   const [selectedLanguage, setSelectedLanguage] = useState("es");
   const [statusMessage, setStatusMessage] = useState("");
-  const messagesEndRef = useRef(null);
 
   const languageOptions = {
     en: "English",
@@ -43,10 +42,6 @@ function App() {
     };
     initAI();
   }, []);
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [outputText]);
 
   const handleSend = async () => {
     if (!inputText.trim()) return;
@@ -106,27 +101,33 @@ function App() {
     setOutputText((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    setStatusMessage("📋 Text copied to clipboard!");
-  };
+  const displayedTextWordCount = outputText.reduce((acc, message) => acc + message.text.split(" ").length, 0);
 
   return (
     <div className="flex flex-col max-w-4xl mx-auto md:my-[10vh] p-8 border rounded-lg shadow-lg bg-white w-full sm:w-4/5 lg:w-3/4 ">
-      <header className="flex flex-col border-b p-6 bg-gray-100 rounded-lg h-[80vh] overflow-auto">
+      <header className="h-[800px] md:h-[900px] border-b p-6 overflow-auto flex flex-col bg-gray-100 rounded-lg">
         <h1 className="text-lg font-bold text-center mb-2">AI Chatbot</h1>
         <p className="text-sm text-gray-600 text-center">Detected Language: {detectedLang}</p>
         <p className="text-sm font-bold text-white text-center p-2 rounded-md bg-purple-600">{statusMessage}</p>
         <div className="flex flex-col gap-3 p-3 overflow-auto h-full">
           {outputText.map((message, index) => (
-            <div key={index} className={`relative p-4 max-w-lg rounded-lg break-words ${message.summarized ? "bg-yellow-300" : message.type === "sent" ? "bg-blue-500 text-white self-end" : "bg-green-400 text-black self-start"}`}>
+            <div key={index} className={`relative p-4 max-w-lg rounded-lg break-words ${message.summarized ? "bg-yellow-200" : message.type === "sent" ? "bg-blue-500 text-white self-end" : "bg-gray-300 text-black self-start"}`}>
               {message.type === "received" && (
-                <button onClick={() => copyToClipboard(message.text)} className="absolute top-1 right-1 text-gray-700 text-sm">📋</button>
+                <div className="absolute top-1 right-1">
+                  <button onClick={() => removeTranslation(index)} className="text-red-500 text-sm">✖</button>
+                </div>
               )}
               {message.text}
+              {message.type === "received" && (
+                <div className="flex justify-between items-center text-xs text-gray-600 mt-1">
+                  <span>{languageOptions[message.lang]}</span>
+                  {message.text.split(" ").length > 150 && (
+                    <button className="text-blue-500 ml-2" onClick={() => summarizeText(message.text, index)}>Summarize</button>
+                  )}
+                </div>
+              )}
             </div>
           ))}
-          <div ref={messagesEndRef} />
         </div>
       </header>
       <div className="flex flex-col md:flex-row gap-3 my-3 w-full">
@@ -138,7 +139,7 @@ function App() {
         <Button onClick={translateText} className="w-full md:w-1/3">Translate</Button>
       </div>
       <Textarea value={inputText} onChange={(e) => setInputText(e.target.value)} placeholder="Type your message..." className="w-full" />
-      <Button onClick={handleSend} className="w-full mt-3">Send</Button>
+      <Button onClick={handleSend} className="w-full mt-3">{displayedTextWordCount > 150 ? "Summarize" : "Send"}</Button>
     </div>
   );
 }
