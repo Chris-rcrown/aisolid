@@ -150,7 +150,6 @@ function App() {
     }
   };
 
-  // Render
   return (
     <div className="flex flex-col max-w-4xl mx-auto h-screen p-4 bg-gradient-to-br from-indigo-900 to-purple-800">
       <div className="flex-1 flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/95 backdrop-blur-sm">
@@ -178,7 +177,6 @@ function App() {
             <div key={message.id} className={`relative p-4 max-w-[85%] rounded-2xl break-words shadow-lg ${
               message.summarized ? "bg-amber-50 border-2 border-amber-200" : 
               message.type === "sent" ? "bg-blue-600 text-white ml-auto" : 
-              message.lang ? "bg-emerald-50 border-2 border-emerald-200" :
               "bg-white text-gray-800 border-2 border-indigo-100"
             }`}>
               <div className="absolute top-2 right-2 flex gap-1">
