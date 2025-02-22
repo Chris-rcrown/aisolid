@@ -1,0 +1,58 @@
+/* Custom animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .chat-message {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  /* Custom scrollbar */
+  .chat-container::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .chat-container::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  
+  .chat-container::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  
+  /* Message bubble styling */
+  .message-bubble {
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  .message-bubble:hover {
+    transform: translateX(2px);
+  }
+  
+  /* Icon hover effects */
+  .icon-hover {
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  
+  .icon-hover:hover {
+    color: #3b82f6;
+    transform: scale(1.1);
+  }
+  
+  /* Gradient background */
+  .chat-gradient-header {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  }
+  
+  /* Input field transitions */
+  .input-field {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .input-field:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
