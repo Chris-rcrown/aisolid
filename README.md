@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# 💬 AI ChatBox
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple and responsive AI-powered chatbox built with **React**, **Vite**, and modern UI components. It supports:
+- Language detection 🌍
+- Text summarization 🧠
+- Language translation 🌐
 
-## Available Scripts
+> This project is built with scalability in mind and is ready for API integration via Chrome AI endpoints.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🔍 Detects language from user input
+- 📝 Summarizes long messages
+- 🌐 Translates text into multiple languages
+- ⚡ Built with Vite for lightning-fast performance
+- 🎨 Beautiful UI with reusable components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React** (Frontend Library)
+- **Vite** (Build Tool)
+- **TailwindCSS** (Styling)
+- **Chrome AI API** (Language Detection, Summarization, Translation)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📁 Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+src/
+│
+├── components/
+│   └── ui/                  # Reusable UI components (Button, Textarea, Select)
+│
+├── App.jsx                  # App root component
+├── ChatBox.jsx              # Chat functionality
+├── index.css                # Global styles
+├── main.jsx                 # Entry point
+└── vite.config.js           # Vite configuration
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ⚙️ Setup & Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone the repository**
+```bash
+git clone https://github.com/your-username/ai-chatbox.git
+cd ai-chatbox
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Install dependencies**
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Create `.env` file**
+```bash
+touch .env
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Then add your keys:
+```
+VITE_API_KEY=your_api_key_here
+VITE_BASE_URL=https://api.chrome.ai
+```
 
-## Learn More
+4. **Run the app**
+```bash
+npm run dev
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📸 Screenshots
 
-### Code Splitting
+![ChatBox Screenshot](./screenshots/chatbox-ui.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🧪 API Endpoints Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Detect Language:** `POST https://api.chrome.ai/language-detection`
+- **Summarize Text:** `POST https://api.chrome.ai/summarizer`
+- **Translate Text:** `POST https://api.chrome.ai/translator`
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📄 License
 
-### Advanced Configuration
+This project is licensed under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 🙌 Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Vite](https://vitejs.dev)
+- [React](https://react.dev)
+- [TailwindCSS](https://tailwindcss.com)
+- [Chrome AI](https://chrome.ai)
